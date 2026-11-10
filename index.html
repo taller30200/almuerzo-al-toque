@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Almuerzo al Toque | San Isidro & Lince</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -36,18 +33,9 @@
     </script>
     
     <style>
-        /* Custom scrollbar & glassmorphism tweaks */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.6);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #0284C7;
-            border-radius: 9999px;
-        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
+        ::-webkit-scrollbar-thumb { background: #0284C7; border-radius: 9999px; }
         .glass-card {
             background: rgba(13, 35, 58, 0.75);
             backdrop-filter: blur(12px);
@@ -60,241 +48,130 @@
             -webkit-backdrop-filter: blur(16px);
             border-top: 1px solid rgba(56, 189, 248, 0.2);
         }
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 15px rgba(2, 132, 199, 0.4); }
             50% { box-shadow: 0 0 25px rgba(147, 51, 234, 0.6); }
         }
-        .glow-effect {
-            animation: pulse-glow 3s infinite;
-        }
+        .glow-effect { animation: pulse-glow 3s infinite; }
     </style>
 </head>
 <body class="h-full flex flex-col font-sans overflow-x-hidden antialiased bg-gradient-to-br from-slate-950 via-[#0D233A] to-slate-900 text-slate-100">
 
-    <!-- APP CONTAINER (Mobile Frame Centered on Desktop) -->
     <div class="w-full max-w-md mx-auto min-h-screen flex flex-col relative pb-24 shadow-2xl bg-slate-900/90 border-x border-slate-800/80">
         
-        <!-- HEADER SUPERIOR -->
         <header class="sticky top-0 z-30 glass-card px-4 pt-3 pb-3 border-b border-cyan-500/20 shadow-lg">
-            <!-- Ubicación & Avatar -->
             <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center space-x-2.5 cursor-pointer hover:opacity-90 transition">
+                <div class="flex items-center space-x-2.5 cursor-pointer">
                     <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-certus-cyan to-certus-purple flex items-center justify-center text-white font-bold text-sm shadow-md">
                         <i class="fa-solid fa-location-dot text-cyan-200"></i>
                     </div>
                     <div>
                         <div class="flex items-center text-xs text-cyan-400 font-semibold tracking-wide uppercase">
                             <span>Zona Financiera</span>
-                            <i class="fa-solid fa-chevron-down ml-1 text-[10px]"></i>
                         </div>
                         <p class="text-xs font-bold text-slate-100 truncate max-w-[200px]">San Isidro & Lince (Oficinas)</p>
                     </div>
                 </div>
 
-                <!-- Botón Perfil / Estatus -->
                 <button onclick="switchTab('profile')" class="relative p-0.5 rounded-full bg-gradient-to-r from-certus-cyan to-certus-purple hover:scale-105 transition">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" 
-                         alt="Usuario" 
-                         class="w-8 h-8 rounded-full object-cover border-2 border-slate-900"
-                         onerror="this.src='https://placehold.co/100x100/0D233A/FFFFFF?text=FJL'">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Usuario" class="w-8 h-8 rounded-full object-cover border-2 border-slate-900">
                     <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-slate-900 rounded-full"></span>
                 </button>
             </div>
 
-            <!-- Buscador Integrado -->
             <div class="relative">
                 <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                <input type="text" 
-                       id="searchInput"
-                       oninput="handleSearch(this.value)"
-                       placeholder="Buscar plato casero, ensalada o menú S/13.50..." 
-                       class="w-full bg-slate-800/90 text-xs text-slate-100 pl-9 pr-8 py-2.5 rounded-xl border border-slate-700/80 focus:outline-none focus:border-certus-cyan focus:ring-1 focus:ring-certus-cyan placeholder-slate-400 transition">
+                <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Buscar plato casero, ensalada o menú S/13.50..." class="w-full bg-slate-800/90 text-xs text-slate-100 pl-9 pr-8 py-2.5 rounded-xl border border-slate-700/80 focus:outline-none focus:border-certus-cyan placeholder-slate-400">
                 <button onclick="clearSearch()" id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
         </header>
 
-        <!-- CONTENIDO DINÁMICO (TABS) -->
         <main class="flex-1 px-4 pt-4 space-y-6">
-
-            <!-- TAB 1: INICIO / CATÁLOGO (Default) -->
             <section id="tab-home" class="tab-content space-y-5">
-                
-                <!-- BANNER DE GARANTÍA 12:45 PM (CERTUS CASE 4) -->
                 <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-certus-navy via-certus-darkblue to-certus-purple p-4 border border-cyan-400/30 shadow-xl">
-                    <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none"></div>
                     <div class="relative z-10">
                         <div class="flex items-center space-x-2 mb-1">
-                            <span class="px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-bold tracking-wider uppercase border border-cyan-500/30">
+                            <span class="px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-bold uppercase border border-cyan-500/30">
                                 <i class="fa-solid fa-clock-rotate-left mr-1"></i> Entrega Exacta
                             </span>
-                            <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold uppercase border border-emerald-500/30">
-                                Plan Suscripción S/13.50
-                            </span>
                         </div>
-                        <h2 class="text-base font-extrabold text-white leading-snug">
-                            ¿Almuerzo a las 12:45 PM en punto?
-                        </h2>
-                        <p class="text-xs text-slate-300 mt-1 max-w-[260px]">
-                            Menús caseros y sanos directo a la recepción de tu edificio en San Isidro o Lince.
-                        </p>
-                        <div class="mt-3 flex items-center justify-between text-[11px] text-cyan-200 font-medium pt-2 border-t border-white/10">
-                            <span><i class="fa-solid fa-square-check text-emerald-400 mr-1"></i> Sin demoras en refrigerio</span>
-                            <span><i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i> Envase térmico</span>
-                        </div>
+                        <h2 class="text-base font-extrabold text-white leading-snug">¿Almuerzo a las 12:45 PM en punto?</h2>
+                        <p class="text-xs text-slate-300 mt-1 max-w-[260px]">Menús caseros y sanos directo a la recepción de tu edificio en San Isidro o Lince.</p>
                     </div>
                 </div>
 
-                <!-- CATEGORÍAS RÁPIDAS -->
                 <div>
                     <div class="flex items-center justify-between mb-2.5">
                         <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Categorías de Menú</h3>
-                        <span class="text-[11px] text-cyan-400 font-semibold cursor-pointer">Ver todos</span>
                     </div>
-                    <div class="flex space-x-2.5 overflow-x-auto hide-scrollbar pb-1" id="categoryContainer">
-                        <!-- Generado por JS -->
-                    </div>
+                    <div class="flex space-x-2.5 overflow-x-auto hide-scrollbar pb-1" id="categoryContainer"></div>
                 </div>
 
-                <!-- RESTAURANTES / COCINAS ALIADAS -->
                 <div class="space-y-3">
                     <div class="flex items-center justify-between">
                         <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Cocinas Aliadas Recomendadas</h3>
                         <span class="text-[10px] text-slate-400">Precio Fijo S/ 13.50</span>
                     </div>
-
-                    <!-- Lista de Restaurantes y sus platos principales -->
-                    <div class="space-y-4" id="restaurantsContainer">
-                        <!-- Generado dinámicamente -->
-                    </div>
+                    <div class="space-y-4" id="restaurantsContainer"></div>
                 </div>
             </section>
 
-            <!-- TAB 2: FAVORITOS -->
             <section id="tab-favorites" class="tab-content hidden space-y-4">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                     <div>
                         <h2 class="text-base font-bold text-white">Tus Platos Favoritos</h2>
                         <p class="text-xs text-slate-400">Guarda lo que más te gusta para pedir en 1 clic</p>
                     </div>
-                    <span class="px-2.5 py-1 rounded-full bg-certus-purple/30 text-purple-300 text-xs font-bold border border-purple-500/30" id="favCountBadge">
-                        0 Platos
-                    </span>
+                    <span class="px-2.5 py-1 rounded-full bg-certus-purple/30 text-purple-300 text-xs font-bold border border-purple-500/30" id="favCountBadge">0 Platos</span>
                 </div>
-
-                <div id="favoritesList" class="space-y-3">
-                    <!-- Dinámico -->
-                </div>
+                <div id="favoritesList" class="space-y-3"></div>
             </section>
 
-            <!-- TAB 3: RECURRENTES / HISTORIAL -->
             <section id="tab-recurrents" class="tab-content hidden space-y-4">
                 <div class="border-b border-slate-800 pb-3">
                     <h2 class="text-base font-bold text-white">Pedidos Recurrentes</h2>
                     <p class="text-xs text-slate-400">Repite tus almuerzos pasados sin volver a armar tu pedido</p>
                 </div>
-
-                <div class="space-y-3" id="recurrentsContainer">
-                    <!-- Dinámico -->
-                </div>
+                <div class="space-y-3" id="recurrentsContainer"></div>
             </section>
 
-            <!-- TAB 4: MI PERFIL (FARID JUNIOR LLAVE LAZO) -->
             <section id="tab-profile" class="tab-content hidden space-y-4">
                 <div class="glass-card rounded-2xl p-5 border border-cyan-500/20 text-center relative overflow-hidden">
-                    <div class="absolute top-0 left-0 right-0 h-16 bg-gradient-to-r from-certus-navy via-certus-cyan to-certus-purple opacity-40"></div>
-                    
                     <div class="relative z-10 flex flex-col items-center">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" 
-                             alt="Farid Junior" 
-                             class="w-20 h-20 rounded-full object-cover border-4 border-slate-900 shadow-xl mb-2"
-                             onerror="this.src='https://placehold.co/200x200/0D233A/FFFFFF?text=FJL'">
-                        
-                        <h2 class="text-lg font-bold text-white">Farid Junior Llave Lazo</h2>
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" alt="Usuario" class="w-20 h-20 rounded-full object-cover border-4 border-slate-900 shadow-xl mb-2">
+                        <h2 class="text-lg font-bold text-white" id="profileNameDisplay">Cliente Ofi</h2>
                         <p class="text-xs text-cyan-400 font-medium">Analista en Oficina - San Isidro</p>
-                        
-                        <div class="mt-3 inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
-                            <i class="fa-solid fa-circle-check mr-1.5 text-[10px]"></i> Suscripción Semanal Activa
-                        </div>
                     </div>
                 </div>
-
-                <!-- Detalle de Oficina y Preferencias -->
                 <div class="glass-card rounded-2xl p-4 space-y-3 text-xs">
-                    <h3 class="font-bold text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-800 pb-2">
-                        <i class="fa-solid fa-building text-cyan-400 mr-1.5"></i> Datos de Entrega Predeterminados
-                    </h3>
-                    
-                    <div class="flex justify-between items-center py-1">
-                        <span class="text-slate-400">Edificio / Torre:</span>
-                        <span class="font-semibold text-slate-200">Torre Barlovento (Begonias 441)</span>
-                    </div>
-                    <div class="flex justify-between items-center py-1 border-t border-slate-800/60">
-                        <span class="text-slate-400">Piso / Oficina:</span>
-                        <span class="font-semibold text-slate-200">Piso 8 - Dpto 802</span>
-                    </div>
-                    <div class="flex justify-between items-center py-1 border-t border-slate-800/60">
-                        <span class="text-slate-400">Horario de Entrega:</span>
-                        <span class="font-bold text-emerald-400">12:45 PM en Punto</span>
-                    </div>
-                    <div class="flex justify-between items-center py-1 border-t border-slate-800/60">
-                        <span class="text-slate-400">Teléfono WhatsApp:</span>
-                        <span class="font-semibold text-cyan-300">+51 928 378 474</span>
-                    </div>
-                </div>
-
-                <!-- Preferencias Nutricionales -->
-                <div class="glass-card rounded-2xl p-4 space-y-2 text-xs">
-                    <h3 class="font-bold text-slate-300 uppercase tracking-wider text-[11px] mb-2">
-                        <i class="fa-solid fa-utensils text-purple-400 mr-1.5"></i> Mis Preferencias Rápidas
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
-                            <i class="fa-solid fa-seedling text-emerald-400 mr-1"></i> Cambio Arroz x Ensalada
-                        </span>
-                        <span class="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
-                            <i class="fa-solid fa-bottle-water text-cyan-400 mr-1"></i> Chicha Morada Natural
-                        </span>
-                        <span class="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
-                            <i class="fa-solid fa-bolt text-amber-400 mr-1"></i> Aliño Aparte
-                        </span>
-                    </div>
+                    <h3 class="font-bold text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-800 pb-2">Datos de Entrega Predeterminados</h3>
+                    <div class="flex justify-between items-center py-1"><span class="text-slate-400">Horario:</span><span class="font-bold text-emerald-400">12:45 PM en Punto</span></div>
+                    <div class="flex justify-between items-center py-1 border-t border-slate-800/60"><span class="text-slate-400">WhatsApp Destino:</span><span class="font-semibold text-cyan-300">+51 928 378 474</span></div>
                 </div>
             </section>
-
         </main>
 
-        <!-- BARRA NAVEGACIÓN INFERIOR (MOBILE BOTTOM NAV) -->
         <nav class="fixed bottom-0 left-0 right-0 z-40 max-w-md mx-auto glass-nav px-3 py-2 flex items-center justify-around">
             <button onclick="switchTab('home')" id="nav-home" class="nav-btn active flex flex-col items-center justify-center w-16 py-1 text-cyan-400 transition">
-                <i class="fa-solid fa-utensils text-lg mb-0.5"></i>
-                <span class="text-[10px] font-semibold">Inicio</span>
+                <i class="fa-solid fa-utensils text-lg mb-0.5"></i><span class="text-[10px] font-semibold">Inicio</span>
             </button>
             <button onclick="switchTab('favorites')" id="nav-favorites" class="nav-btn flex flex-col items-center justify-center w-16 py-1 text-slate-400 hover:text-slate-200 transition">
-                <i class="fa-solid fa-heart text-lg mb-0.5"></i>
-                <span class="text-[10px] font-semibold">Favoritos</span>
+                <i class="fa-solid fa-heart text-lg mb-0.5"></i><span class="text-[10px] font-semibold">Favoritos</span>
             </button>
             <button onclick="switchTab('recurrents')" id="nav-recurrents" class="nav-btn flex flex-col items-center justify-center w-16 py-1 text-slate-400 hover:text-slate-200 transition">
-                <i class="fa-solid fa-clock-rotate-left text-lg mb-0.5"></i>
-                <span class="text-[10px] font-semibold">Recurrentes</span>
+                <i class="fa-solid fa-clock-rotate-left text-lg mb-0.5"></i><span class="text-[10px] font-semibold">Recurrentes</span>
             </button>
             <button onclick="switchTab('profile')" id="nav-profile" class="nav-btn flex flex-col items-center justify-center w-16 py-1 text-slate-400 hover:text-slate-200 transition">
-                <i class="fa-solid fa-user text-lg mb-0.5"></i>
-                <span class="text-[10px] font-semibold">Mi Perfil</span>
+                <i class="fa-solid fa-user text-lg mb-0.5"></i><span class="text-[10px] font-semibold">Mi Perfil</span>
             </button>
         </nav>
 
-        <!-- FLOATING CART BUTTON (Aparece cuando hay items) -->
         <div id="floatingCartBtn" class="fixed bottom-16 left-0 right-0 max-w-md mx-auto px-4 z-30 hidden">
-            <button onclick="openCheckoutModal()" class="w-full bg-gradient-to-r from-certus-cyan to-certus-purple hover:opacity-95 text-white font-bold py-3 px-4 rounded-xl shadow-2xl glow-effect flex items-center justify-between transition transform active:scale-98">
+            <button onclick="openCheckoutModal()" class="w-full bg-gradient-to-r from-certus-cyan to-certus-purple text-white font-bold py-3 px-4 rounded-xl shadow-2xl glow-effect flex items-center justify-between">
                 <div class="flex items-center space-x-2">
                     <span class="w-6 h-6 rounded-full bg-white/20 text-white flex items-center justify-center text-xs font-extrabold" id="cartBadgeCount">0</span>
                     <span class="text-xs tracking-wide">VER PEDIDO DEL DÍA</span>
@@ -305,200 +182,107 @@
                 </div>
             </button>
         </div>
-
     </div>
 
-    <!-- MODAL 1: PERSONALIZADOR DE PLATO (RÚBRICA CERTUS AA2 MEJORAS) -->
-    <div id="dishModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity duration-300">
+    <div id="dishModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div class="bg-slate-900 border border-slate-700/80 w-full max-w-md rounded-t-3xl sm:rounded-2xl max-h-[90vh] overflow-y-auto hide-scrollbar flex flex-col shadow-2xl relative">
-            
-            <!-- Botón Cerrar -->
-            <button onclick="closeDishModal()" class="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-slate-950/60 text-white flex items-center justify-center hover:bg-slate-800 transition">
+            <button onclick="closeDishModal()" class="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-slate-950/60 text-white flex items-center justify-center">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-
-            <!-- Imagen del Plato -->
             <div class="relative h-48 w-full bg-slate-800">
                 <img id="modalDishImg" src="" alt="Plato" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
                 <div class="absolute bottom-3 left-4 right-4 flex justify-between items-end">
-                    <span class="px-2.5 py-1 rounded-full bg-emerald-500/90 text-slate-950 font-black text-xs uppercase tracking-wider" id="modalDishBadge">
-                        Suscripción S/ 13.50
-                    </span>
-                    <button id="modalFavBtn" onclick="toggleModalFav()" class="w-9 h-9 rounded-full bg-slate-900/80 text-rose-500 flex items-center justify-center hover:scale-110 transition">
+                    <span class="px-2.5 py-1 rounded-full bg-emerald-500/90 text-slate-950 font-black text-xs uppercase tracking-wider">Menú S/ 13.50</span>
+                    <button id="modalFavBtn" onclick="toggleModalFav()" class="w-9 h-9 rounded-full bg-slate-900/80 text-rose-500 flex items-center justify-center">
                         <i class="fa-regular fa-heart"></i>
                     </button>
                 </div>
             </div>
-
-            <!-- Detalle & Configuración -->
             <div class="p-5 space-y-5 flex-1">
                 <div>
-                    <h3 class="text-lg font-bold text-white" id="modalDishTitle">Pollo a la Plancha Saludable</h3>
-                    <p class="text-xs text-slate-300 mt-1" id="modalDishDesc">Pechuga a la plancha jugosa, sazonada con hierbas finas, servida con guarniciones a elección.</p>
+                    <h3 class="text-lg font-bold text-white" id="modalDishTitle">Plato</h3>
+                    <p class="text-xs text-slate-300 mt-1" id="modalDishDesc"></p>
                 </div>
-
-                <!-- SECCIÓN DE MEJORAS CLAVE (RÚBRICA AA2 - CAMBIO DE RACIONES) -->
                 <div class="space-y-4">
-                    
-                    <!-- Opción 1: Cambio de Carbohidrato principal -->
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/60">
-                        <label class="block text-xs font-bold text-cyan-300 uppercase tracking-wider mb-2">
-                            <i class="fa-solid fa-arrows-rotate mr-1"></i> Base del Almuerzo (Elige 1):
-                        </label>
+                        <label class="block text-xs font-bold text-cyan-300 uppercase tracking-wider mb-2">Base del Almuerzo (Elige 1):</label>
                         <div class="space-y-2 text-xs">
-                            <label class="flex items-center justify-between p-2 rounded-lg bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:border-cyan-500/50 transition">
+                            <label class="flex items-center justify-between p-2 rounded-lg bg-slate-900/60 border border-slate-700/50 cursor-pointer">
                                 <div class="flex items-center space-x-2">
-                                    <input type="radio" name="baseOption" value="Arroz Blanco Casero" checked class="text-cyan-500 focus:ring-0">
+                                    <input type="radio" name="baseOption" value="Arroz Blanco Casero" checked class="text-cyan-500">
                                     <span class="text-slate-200">Arroz Blanco Casero</span>
                                 </div>
-                                <span class="text-[10px] text-slate-400">Estándar</span>
                             </label>
-
-                            <label class="flex items-center justify-between p-2 rounded-lg bg-slate-900/60 border border-emerald-500/40 cursor-pointer hover:border-emerald-500 transition">
+                            <label class="flex items-center justify-between p-2 rounded-lg bg-slate-900/60 border border-emerald-500/40 cursor-pointer">
                                 <div class="flex items-center space-x-2">
-                                    <input type="radio" name="baseOption" value="Doble Ensalada Fresca (Sin Arroz)" class="text-emerald-500 focus:ring-0">
+                                    <input type="radio" name="baseOption" value="Doble Ensalada Fresca (Sin Arroz)" class="text-emerald-500">
                                     <span class="text-emerald-300 font-semibold">Doble Ensalada Fresca (Fit / Sin Arroz)</span>
                                 </div>
                                 <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-bold">¡Recomendado!</span>
                             </label>
-
-                            <label class="flex items-center justify-between p-2 rounded-lg bg-slate-900/60 border border-slate-700/50 cursor-pointer hover:border-cyan-500/50 transition">
-                                <div class="flex items-center space-x-2">
-                                    <input type="radio" name="baseOption" value="Arroz Integral de la Casa" class="text-cyan-500 focus:ring-0">
-                                    <span class="text-slate-200">Arroz Integral Integrado</span>
-                                </div>
-                                <span class="text-[10px] text-slate-400">+S/ 0.00</span>
-                            </label>
                         </div>
                     </div>
-
-                    <!-- Opción 2: Selección de Bebida Natural -->
                     <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/60">
-                        <label class="block text-xs font-bold text-purple-300 uppercase tracking-wider mb-2">
-                            <i class="fa-solid fa-bottle-water mr-1"></i> Bebida Saludable Incluida:
-                        </label>
+                        <label class="block text-xs font-bold text-purple-300 uppercase tracking-wider mb-2">Bebida Saludable Incluida:</label>
                         <select id="drinkSelect" class="w-full bg-slate-900 text-xs text-slate-200 p-2.5 rounded-lg border border-slate-700 focus:outline-none focus:border-purple-500">
                             <option value="Chicha Morada Natural (Baja en Azúcar)">Chicha Morada Natural (Baja en Azúcar)</option>
                             <option value="Agua Sin Gas 500ml">Agua Mineral Sin Gas 500ml</option>
-                            <option value="Infusión Helada de Manzanilla con Miel">Infusión Helada de Manzanilla con Miel</option>
                         </select>
                     </div>
-
-                    <!-- Opción 3: Opciones Extras / Modificadores -->
-                    <div class="bg-slate-800/70 p-3.5 rounded-xl border border-slate-700/60">
-                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
-                            <i class="fa-solid fa-sliders mr-1"></i> Modificadores de Plato:
-                        </label>
-                        <div class="space-y-2 text-xs">
-                            <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="checkbox" id="checkExtraProtein" onchange="updateModalPrice()" class="rounded text-certus-cyan focus:ring-0">
-                                <span class="text-slate-300">Agregar Proteína Extra (+S/ 4.00)</span>
-                            </label>
-                            <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="checkbox" id="checkSauceSeparate" class="rounded text-certus-cyan focus:ring-0" checked>
-                                <span class="text-slate-300">Aliño de ensalada aparte</span>
-                            </label>
-                            <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="checkbox" id="checkNoOnion" class="rounded text-certus-cyan focus:ring-0">
-                                <span class="text-slate-300">Sin cebolla en la ensalada</span>
-                            </label>
-                        </div>
-                    </div>
-
                 </div>
-
-                <!-- Cantidad & Total -->
                 <div class="flex items-center justify-between pt-2 border-t border-slate-800">
                     <div class="flex items-center space-x-3 bg-slate-800 p-1.5 rounded-xl border border-slate-700">
-                        <button onclick="changeModalQty(-1)" class="w-7 h-7 rounded-lg bg-slate-700 text-white font-bold flex items-center justify-center hover:bg-slate-600">-</button>
+                        <button onclick="changeModalQty(-1)" class="w-7 h-7 rounded-lg bg-slate-700 text-white font-bold flex items-center justify-center">-</button>
                         <span id="modalQty" class="text-xs font-bold w-4 text-center">1</span>
-                        <button onclick="changeModalQty(1)" class="w-7 h-7 rounded-lg bg-slate-700 text-white font-bold flex items-center justify-center hover:bg-slate-600">+</button>
+                        <button onclick="changeModalQty(1)" class="w-7 h-7 rounded-lg bg-slate-700 text-white font-bold flex items-center justify-center">+</button>
                     </div>
-
                     <div class="text-right">
                         <span class="text-[10px] text-slate-400 block">Total a Pagar</span>
                         <span id="modalCalculatedPrice" class="text-base font-black text-cyan-400">S/ 13.50</span>
                     </div>
                 </div>
-
-                <!-- Botón Añadir -->
-                <button onclick="confirmAddToCart()" class="w-full bg-gradient-to-r from-certus-cyan to-certus-purple hover:opacity-95 text-white font-bold py-3 rounded-xl shadow-lg transition">
-                    Añadir al Pedido del Día
-                </button>
+                <button onclick="confirmAddToCart()" class="w-full bg-gradient-to-r from-certus-cyan to-certus-purple text-white font-bold py-3 rounded-xl shadow-lg">Añadir al Pedido del Día</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 2: CHECKOUT & INTEGRACIÓN AUTOMÁTICA WHATSAPP -->
     <div id="checkoutModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div class="bg-slate-900 border border-slate-700/90 w-full max-w-md rounded-t-3xl sm:rounded-2xl max-h-[92vh] overflow-y-auto hide-scrollbar p-5 space-y-4 shadow-2xl relative">
-            
-            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center hover:text-white">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-
             <div class="border-b border-slate-800 pb-3">
-                <div class="inline-flex items-center space-x-1.5 text-xs text-cyan-400 font-bold mb-1 uppercase tracking-wider">
-                    <i class="fa-solid fa-truck-fast"></i>
-                    <span>Entrega San Isidro / Lince</span>
-                </div>
                 <h3 class="text-lg font-bold text-white">Confirmar Almuerzo al Toque</h3>
             </div>
-
-            <!-- Resumen de items agregados -->
-            <div class="space-y-2 bg-slate-800/60 p-3 rounded-xl border border-slate-700/60" id="checkoutItemsSummary">
-                <!-- Se llena dinámicamente -->
-            </div>
-
-            <!-- FORMULARIO DE DATOS DE ENTREGA -->
+            <div class="space-y-2 bg-slate-800/60 p-3 rounded-xl border border-slate-700/60" id="checkoutItemsSummary"></div>
             <form id="whatsappForm" onsubmit="sendOrderToWhatsApp(event)" class="space-y-3.5 text-xs">
-                
-                <h4 class="font-bold text-slate-300 uppercase tracking-wider text-[11px] pt-1">
-                    <i class="fa-solid fa-user-gear text-purple-400 mr-1"></i> Datos para la Entrega (12:45 PM)
-                </h4>
-
+                <h4 class="font-bold text-slate-300 uppercase tracking-wider text-[11px] pt-1">Datos para la Entrega (12:45 PM)</h4>
                 <div>
                     <label class="block text-slate-400 mb-1">Nombre Completo:</label>
-                    <input type="text" id="custName" required value="Farid Junior Llave Lazo" class="w-full bg-slate-950 text-slate-100 p-2.5 rounded-lg border border-slate-700 focus:border-cyan-500 focus:outline-none">
+                    <input type="text" id="custName" required placeholder="Escribe tu Nombre Completo" class="w-full bg-slate-950 text-slate-100 p-2.5 rounded-lg border border-slate-700 focus:border-cyan-500 focus:outline-none">
                 </div>
-
                 <div class="grid grid-cols-2 gap-2.5">
                     <div>
                         <label class="block text-slate-400 mb-1">Edificio / Empresa:</label>
-                        <input type="text" id="custBuilding" required value="Torre Barlovento (Begonias)" class="w-full bg-slate-950 text-slate-100 p-2.5 rounded-lg border border-slate-700 focus:border-cyan-500 focus:outline-none">
+                        <input type="text" id="custBuilding" required placeholder="Ej. Torre Barlovento" class="w-full bg-slate-950 text-slate-100 p-2.5 rounded-lg border border-slate-700 focus:border-cyan-500 focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-slate-400 mb-1">Piso / Dpto / Oficina:</label>
-                        <input type="text" id="custOffice" required value="Piso 8 - Oficina 802" class="w-full bg-slate-950 text-slate-100 p-2.5 rounded-lg border border-slate-700 focus:border-cyan-500 focus:outline-none">
+                        <label class="block text-slate-400 mb-1">Piso / Oficina:</label>
+                        <input type="text" id="custOffice" required placeholder="Ej. Piso 8 - Of. 802" class="w-full bg-slate-950 text-slate-100 p-2.5 rounded-lg border border-slate-700 focus:border-cyan-500 focus:outline-none">
                     </div>
                 </div>
-
                 <div>
-                    <label class="block text-slate-400 mb-1">Referencia exacta de entrega:</label>
-                    <input type="text" id="custRef" value="Dejar en Recepción del primer piso con vigilancia" class="w-full bg-slate-950 text-slate-100 p-2.5 rounded-lg border border-slate-700 focus:border-cyan-500 focus:outline-none">
+                    <label class="block text-slate-400 mb-1">Referencia exacta:</label>
+                    <input type="text" id="custRef" placeholder="Ej. Recepción principal" class="w-full bg-slate-950 text-slate-100 p-2.5 rounded-lg border border-slate-700 focus:border-cyan-500 focus:outline-none">
                 </div>
-
                 <div>
-                    <label class="block text-slate-400 mb-1">Método de Pago Preferido:</label>
+                    <label class="block text-slate-400 mb-1">Método de Pago:</label>
                     <select id="paymentMethod" class="w-full bg-slate-950 text-slate-100 p-2.5 rounded-lg border border-slate-700 focus:border-cyan-500 focus:outline-none font-semibold">
-                        <option value="Yape al 928378474">Yape (Recomendado - S/ 13.50)</option>
-                        <option value="Plin al 928378474">Plin (S/ 13.50)</option>
-                        <option value="Efectivo Exacto en Recepción">Efectivo Exacto (Recepción)</option>
+                        <option value="Yape al 928378474">Yape (S/ 13.50)</option>
+                        <option value="Efectivo en Recepción">Efectivo Exacto (S/ 13.50)</option>
                     </select>
                 </div>
-
-                <!-- BANNER RECORDATORIO HORA DE ENTREGA -->
-                <div class="p-3 rounded-xl bg-cyan-950/40 border border-cyan-500/30 flex items-center space-x-3 text-cyan-200">
-                    <i class="fa-solid fa-clock text-xl text-cyan-400 shrink-0"></i>
-                    <div>
-                        <p class="font-bold text-[11px]">Garantía Almuerzo al Toque</p>
-                        <p class="text-[10px] text-cyan-300/80">Tu pedido llegará sellado térmicamente exactamente a las 12:45 PM a la recepción señalada.</p>
-                    </div>
-                </div>
-
-                <!-- BOTÓN PRINCIPAL DE ENVÍO AUTOMÁTICO A WHATSAPP -->
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 px-4 rounded-xl shadow-xl flex items-center justify-center space-x-2.5 transition transform active:scale-98">
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 px-4 rounded-xl shadow-xl flex items-center justify-center space-x-2.5">
                     <i class="fa-brands fa-whatsapp text-xl"></i>
                     <span class="text-xs uppercase tracking-wide">CONFIRMAR PEDIDO POR WHATSAPP</span>
                 </button>
@@ -506,20 +290,14 @@
         </div>
     </div>
 
-    <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-2xl border border-cyan-500/40 flex items-center space-x-2 hidden transition-all duration-300">
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-2xl border border-cyan-500/40 flex items-center space-x-2 hidden">
         <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
-        <span id="toastMsg">Notificación</span>
+        <span id="toastMsg"></span>
     </div>
 
-    <!-- JAVASCRIPT LÓGICO DE LA WEBAPP -->
     <script>
-        // ==========================================
-        // BASE DE DATOS LOCAL DE PRODUCTOS Y COCINAS
-        // ==========================================
         const categories = [
             { id: 'all', name: 'Todos los Menús', icon: 'fa-border-all' },
-            { id: 'suscripcion', name: 'Suscripción S/13.50', icon: 'fa-calendar-check' },
             { id: 'fit', name: 'Fit & Proteico', icon: 'fa-dumbbell' },
             { id: 'casero', name: 'Criollo Casero', icon: 'fa-drumstick-bite' },
             { id: 'veggie', name: 'Saludables / Veggie', icon: 'fa-leaf' }
@@ -527,608 +305,176 @@
 
         const restaurants = [
             {
-                id: 'r1',
-                name: 'Sazón Casera San Isidro',
-                tag: 'Especialista en Menú Ejecutivo',
-                rating: '4.9',
-                time: '12:45 PM Exacto',
+                id: 'r1', name: 'Sazón Casera San Isidro', tag: 'Especialista en Menú Ejecutivo', time: '12:45 PM Exacto',
                 dishes: [
-                    {
-                        id: 'd1',
-                        name: 'Pollo a la Plancha + Ensalada Fresca',
-                        category: 'fit',
-                        price: 13.50,
-                        desc: 'Pechuga a la plancha jugosa marinada en finas hierbas. Opción de cambiar el arroz por doble porción de ensalada.',
-                        image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=500&auto=format&fit=crop&q=80',
-                        isPopular: true
-                    },
-                    {
-                        id: 'd2',
-                        name: 'Seco de Pollo Casero con Yuca',
-                        category: 'casero',
-                        price: 13.50,
-                        desc: 'Guiso tradicional a base de culantro fresco, acompañado de yuca sancochada y opción de ensalada criolla.',
-                        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80',
-                        isPopular: false
-                    }
+                    { id: 'd1', name: 'Pollo a la Plancha + Ensalada Fresca', category: 'fit', price: 13.50, desc: 'Pechuga a la plancha jugosa marinada en finas hierbas con guarnición.', image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=500&auto=format&fit=crop&q=80' },
+                    { id: 'd2', name: 'Seco de Pollo Casero con Yuca', category: 'casero', price: 13.50, desc: 'Guiso tradicional a base de culantro fresco y yuca sancochada.', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80' }
                 ]
             },
             {
-                id: 'r2',
-                name: 'Green Fit Lince & Offi',
-                tag: 'Comida Nutritiva & Balanceada',
-                rating: '4.8',
-                time: '12:45 PM Exacto',
+                id: 'r2', name: 'Green Fit Lince & Offi', tag: 'Comida Nutritiva & Balanceada', time: '12:45 PM Exacto',
                 dishes: [
-                    {
-                        id: 'd3',
-                        name: 'Bowl Proteico de Pavo y Palta',
-                        category: 'fit',
-                        price: 13.50,
-                        desc: 'Medallones de pavo al horno, palta fuerte, choclo desgranado, tomate cherry y base personalizable.',
-                        image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=80',
-                        isPopular: true
-                    },
-                    {
-                        id: 'd4',
-                        name: 'Hamburguesa de Quinoa & Garbanzos',
-                        category: 'veggie',
-                        price: 13.50,
-                        desc: 'Hamburguesa artesanal vegetariana con vegetales salteados al wok y vinagreta de la casa aparte.',
-                        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format&fit=crop&q=80',
-                        isPopular: false
-                    }
-                ]
-            },
-            {
-                id: 'r3',
-                name: 'La Cocina de Mamá Offi',
-                tag: 'Gusto Hogareño Directo',
-                rating: '4.9',
-                time: '12:45 PM Exacto',
-                dishes: [
-                    {
-                        id: 'd5',
-                        name: 'Estofado de Carne con Verduras',
-                        category: 'casero',
-                        price: 13.50,
-                        desc: 'Trozos suaves de carne de res cocinados a fuego lento con zanahoria, arvejas y papas nativas.',
-                        image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=500&auto=format&fit=crop&q=80',
-                        isPopular: true
-                    }
+                    { id: 'd3', name: 'Bowl Proteico de Pavo y Palta', category: 'fit', price: 13.50, desc: 'Medallones de pavo al horno, palta fuerte, choclo y tomate cherry.', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=80' }
                 ]
             }
         ];
 
-        // Recurrents Mock Data
-        const recurrentOrders = [
-            {
-                date: 'Ayer, 12:45 PM',
-                dishName: 'Pollo a la Plancha + Ensalada Fresca',
-                restaurant: 'Sazón Casera San Isidro',
-                price: 13.50,
-                base: 'Doble Ensalada Fresca (Sin Arroz)',
-                image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=200&auto=format&fit=crop&q=80'
-            },
-            {
-                date: 'Hace 3 días',
-                dishName: 'Bowl Proteico de Pavo y Palta',
-                restaurant: 'Green Fit Lince & Offi',
-                price: 13.50,
-                base: 'Arroz Integral Integrado',
-                image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200&auto=format&fit=crop&q=80'
-            }
-        ];
-
-        // STATE APP
-        let favorites = ['d1', 'd3']; // Default favorites IDs
+        let favorites = ['d1'];
         let cart = [];
         let selectedCategory = 'all';
         let currentModalDish = null;
         let modalQty = 1;
 
-        // ==========================================
-        // INITIALIZATION
-        // ==========================================
         window.addEventListener('DOMContentLoaded', () => {
             renderCategories();
             renderRestaurants();
             renderFavorites();
             renderRecurrents();
-            updateCartUI();
         });
 
-        // ==========================================
-        // RENDER FUNCTIONS
-        // ==========================================
         function renderCategories() {
-            const container = document.getElementById('categoryContainer');
-            container.innerHTML = categories.map(cat => `
-                <button onclick="filterCategory('${cat.id}')" 
-                        class="shrink-0 px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center space-x-1.5 transition ${
-                            selectedCategory === cat.id 
-                            ? 'bg-gradient-to-r from-certus-cyan to-certus-purple text-white border-cyan-400 shadow-md' 
-                            : 'bg-slate-800/80 text-slate-300 border-slate-700/80 hover:bg-slate-700'
-                        }">
-                    <i class="fa-solid ${cat.icon} text-[11px]"></i>
-                    <span>${cat.name}</span>
+            document.getElementById('categoryContainer').innerHTML = categories.map(cat => `
+                <button onclick="filterCategory('${cat.id}')" class="shrink-0 px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center space-x-1.5 transition ${selectedCategory === cat.id ? 'bg-gradient-to-r from-certus-cyan to-certus-purple text-white border-cyan-400 shadow-md' : 'bg-slate-800/80 text-slate-300 border-slate-700/80'}">
+                    <i class="fa-solid ${cat.icon} text-[11px]"></i><span>${cat.name}</span>
                 </button>
             `).join('');
         }
 
-        function renderRestaurants(filterQuery = '') {
-            const container = document.getElementById('restaurantsContainer');
+        function renderRestaurants(query = '') {
             let html = '';
-
             restaurants.forEach(rest => {
-                // Filter dishes
-                const matchingDishes = rest.dishes.filter(d => {
-                    const matchCat = selectedCategory === 'all' || selectedCategory === 'suscripcion' || d.category === selectedCategory;
-                    const matchSearch = d.name.toLowerCase().includes(filterQuery.toLowerCase()) || 
-                                        d.desc.toLowerCase().includes(filterQuery.toLowerCase()) ||
-                                        rest.name.toLowerCase().includes(filterQuery.toLowerCase());
-                    return matchCat && matchSearch;
-                });
-
-                if (matchingDishes.length > 0) {
+                const dishes = rest.dishes.filter(d => (selectedCategory === 'all' || d.category === selectedCategory) && d.name.toLowerCase().includes(query.toLowerCase()));
+                if (dishes.length > 0) {
                     html += `
-                        <div class="glass-card rounded-2xl overflow-hidden p-3.5 space-y-3">
-                            <!-- Header Cocina -->
+                        <div class="glass-card rounded-2xl p-3.5 space-y-3">
                             <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-                                <div>
-                                    <h4 class="text-xs font-extrabold text-white flex items-center">
-                                        <i class="fa-solid fa-store text-cyan-400 mr-1.5 text-[11px]"></i>
-                                        ${rest.name}
-                                    </h4>
-                                    <p class="text-[10px] text-slate-400">${rest.tag}</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold text-[10px] border border-emerald-500/30">
-                                        <i class="fa-solid fa-clock mr-1"></i>${rest.time}
-                                    </span>
-                                </div>
+                                <h4 class="text-xs font-extrabold text-white"><i class="fa-solid fa-store text-cyan-400 mr-1.5"></i>${rest.name}</h4>
+                                <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold text-[10px]"><i class="fa-solid fa-clock mr-1"></i>${rest.time}</span>
                             </div>
-
-                            <!-- Platos de la cocina -->
                             <div class="space-y-3">
-                                ${matchingDishes.map(dish => {
-                                    const isFav = favorites.includes(dish.id);
-                                    return `
-                                        <div class="flex space-x-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 hover:border-cyan-500/40 transition">
-                                            <img src="${dish.image}" 
-                                                 alt="${dish.name}" 
-                                                 class="w-20 h-20 rounded-lg object-cover bg-slate-800 shrink-0"
-                                                 onerror="this.src='https://placehold.co/200x200/0D233A/FFFFFF?text=Menu'">
-                                            
-                                            <div class="flex-1 flex flex-col justify-between min-w-0">
-                                                <div>
-                                                    <div class="flex items-start justify-between">
-                                                        <h5 class="text-xs font-bold text-slate-100 truncate pr-1">${dish.name}</h5>
-                                                        <button onclick="toggleFavorite('${dish.id}')" class="text-slate-400 hover:text-rose-500 text-xs transition">
-                                                            <i class="${isFav ? 'fa-solid fa-heart text-rose-500' : 'fa-regular fa-heart'}"></i>
-                                                        </button>
-                                                    </div>
-                                                    <p class="text-[10px] text-slate-400 line-clamp-2 mt-0.5">${dish.desc}</p>
-                                                </div>
-
-                                                <div class="flex items-center justify-between pt-1">
-                                                    <span class="text-xs font-extrabold text-cyan-400">S/ ${dish.price.toFixed(2)}</span>
-                                                    <button onclick="openDishModal('${dish.id}')" 
-                                                            class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-certus-cyan to-certus-purple text-white text-[10px] font-bold shadow hover:opacity-90 transition">
-                                                         Personalizar & Pedir
-                                                    </button>
-                                                </div>
+                                ${dishes.map(dish => `
+                                    <div class="flex space-x-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+                                        <img src="${dish.image}" class="w-20 h-20 rounded-lg object-cover bg-slate-800 shrink-0">
+                                        <div class="flex-1 flex flex-col justify-between min-w-0">
+                                            <div>
+                                                <h5 class="text-xs font-bold text-slate-100 truncate">${dish.name}</h5>
+                                                <p class="text-[10px] text-slate-400 line-clamp-2 mt-0.5">${dish.desc}</p>
+                                            </div>
+                                            <div class="flex items-center justify-between pt-1">
+                                                <span class="text-xs font-extrabold text-cyan-400">S/ ${dish.price.toFixed(2)}</span>
+                                                <button onclick="openDishModal('${dish.id}')" class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-certus-cyan to-certus-purple text-white text-[10px] font-bold shadow">Pedir</button>
                                             </div>
                                         </div>
-                                    `;
-                                }).join('')}
+                                    </div>
+                                `).join('')}
                             </div>
                         </div>
                     `;
                 }
             });
-
-            if (html === '') {
-                html = `
-                    <div class="text-center py-8 text-slate-400 space-y-2">
-                        <i class="fa-solid fa-utensils text-3xl text-slate-600"></i>
-                        <p class="text-xs">No se encontraron almuerzos en esta categoría.</p>
-                    </div>
-                `;
-            }
-
-            container.innerHTML = html;
+            document.getElementById('restaurantsContainer').innerHTML = html || '<p class="text-center text-xs text-slate-400 py-6">No hay platos en esta categoría.</p>';
         }
 
         function renderFavorites() {
-            const container = document.getElementById('favoritesList');
-            const badge = document.getElementById('favCountBadge');
-            badge.innerText = `${favorites.length} Platos`;
-
-            let allDishes = [];
-            restaurants.forEach(r => allDishes.push(...r.dishes));
-
-            const favDishes = allDishes.filter(d => favorites.includes(d.id));
-
-            if (favDishes.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-10 text-slate-400 space-y-2">
-                        <i class="fa-regular fa-heart text-3xl text-slate-600"></i>
-                        <p class="text-xs">No tienes favoritos guardados todavía.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = favDishes.map(dish => `
+            let all = []; restaurants.forEach(r => all.push(...r.dishes));
+            const favs = all.filter(d => favorites.includes(d.id));
+            document.getElementById('favCountBadge').innerText = `${favs.length} Platos`;
+            document.getElementById('favoritesList').innerHTML = favs.length ? favs.map(d => `
                 <div class="glass-card p-3 rounded-xl flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <img src="${dish.image}" class="w-14 h-14 rounded-lg object-cover">
-                        <div>
-                            <h4 class="text-xs font-bold text-white">${dish.name}</h4>
-                            <p class="text-[10px] text-cyan-400 font-bold">S/ ${dish.price.toFixed(2)}</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button onclick="openDishModal('${dish.id}')" class="px-2.5 py-1 rounded-lg bg-cyan-600 text-white text-[10px] font-bold">Pedir</button>
-                        <button onclick="toggleFavorite('${dish.id}')" class="text-rose-500 hover:text-rose-400 p-1">
-                            <i class="fa-solid fa-trash-can text-xs"></i>
-                        </button>
-                    </div>
+                    <div class="flex items-center space-x-3"><img src="${d.image}" class="w-14 h-14 rounded-lg object-cover"><div><h4 class="text-xs font-bold text-white">${d.name}</h4><p class="text-[10px] text-cyan-400 font-bold">S/ ${d.price.toFixed(2)}</p></div></div>
+                    <button onclick="openDishModal('${d.id}')" class="px-2.5 py-1 rounded-lg bg-cyan-600 text-white text-[10px] font-bold">Pedir</button>
                 </div>
-            `).join('');
+            `).join('') : '<p class="text-center text-xs text-slate-400 py-8">Sin favoritos.</p>';
         }
 
         function renderRecurrents() {
-            const container = document.getElementById('recurrentsContainer');
-            container.innerHTML = recurrentOrders.map(item => `
+            document.getElementById('recurrentsContainer').innerHTML = `
                 <div class="glass-card p-3.5 rounded-xl space-y-2 border-l-4 border-l-certus-cyan">
                     <div class="flex justify-between items-start">
-                        <div class="flex items-center space-x-2">
-                            <img src="${item.image}" class="w-10 h-10 rounded-lg object-cover">
-                            <div>
-                                <h4 class="text-xs font-bold text-white">${item.dishName}</h4>
-                                <p class="text-[10px] text-slate-400">${item.restaurant}</p>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">${item.date}</span>
+                        <div><h4 class="text-xs font-bold text-white">Pollo a la Plancha + Ensalada</h4><p class="text-[10px] text-slate-400">Sazón Casera San Isidro</p></div>
+                        <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">Ayer, 12:45 PM</span>
                     </div>
-
-                    <div class="bg-slate-900/60 p-2 rounded text-[10px] text-emerald-300 font-medium">
-                        <i class="fa-solid fa-check mr-1"></i> Configuración: ${item.base}
-                    </div>
-
-                    <div class="flex justify-between items-center pt-1">
-                        <span class="text-xs font-extrabold text-cyan-400">S/ ${item.price.toFixed(2)}</span>
-                        <button onclick="reorderRecurrent('${item.dishName}', ${item.price}, '${item.base}')" 
-                                class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-certus-cyan to-certus-purple text-white text-[10px] font-bold shadow hover:opacity-90">
-                            <i class="fa-solid fa-rotate-right mr-1"></i> Repetir Pedido
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+                    <div class="flex justify-between items-center pt-1"><span class="text-xs font-extrabold text-cyan-400">S/ 13.50</span>
+                    <button onclick="reorderRecurrent('Pollo a la Plancha + Ensalada', 13.50)" class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-certus-cyan to-certus-purple text-white text-[10px] font-bold">Repetir Pedido</button></div>
+                </div>`;
         }
 
-        // ==========================================
-        // TAB SWITCHER LOGIC
-        // ==========================================
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('text-cyan-400', 'active');
-                btn.classList.add('text-slate-400');
-            });
-
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('text-cyan-400', 'active'));
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
-            const activeBtn = document.getElementById(`nav-${tabId}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('text-slate-400');
-                activeBtn.classList.add('text-cyan-400', 'active');
-            }
-
+            document.getElementById(`nav-${tabId}`).classList.add('text-cyan-400', 'active');
             if (tabId === 'favorites') renderFavorites();
             if (tabId === 'recurrents') renderRecurrents();
         }
 
-        // ==========================================
-        // CATEGORY & SEARCH HANDLERS
-        // ==========================================
-        function filterCategory(catId) {
-            selectedCategory = catId;
-            renderCategories();
-            renderRestaurants(document.getElementById('searchInput').value);
-        }
+        function filterCategory(catId) { selectedCategory = catId; renderCategories(); renderRestaurants(document.getElementById('searchInput').value); }
+        function handleSearch(val) { document.getElementById('clearSearchBtn').classList.toggle('hidden', val.length === 0); renderRestaurants(val); }
+        function clearSearch() { document.getElementById('searchInput').value = ''; document.getElementById('clearSearchBtn').classList.add('hidden'); renderRestaurants(''); }
 
-        function handleSearch(val) {
-            const clearBtn = document.getElementById('clearSearchBtn');
-            if (val.length > 0) {
-                clearBtn.classList.remove('hidden');
-            } else {
-                clearBtn.classList.add('hidden');
-            }
-            renderRestaurants(val);
-        }
-
-        function clearSearch() {
-            const input = document.getElementById('searchInput');
-            input.value = '';
-            document.getElementById('clearSearchBtn').classList.add('hidden');
-            renderRestaurants('');
-        }
-
-        // ==========================================
-        // FAVORITES LOGIC
-        // ==========================================
-        function toggleFavorite(id) {
-            const index = favorites.indexOf(id);
-            if (index > -1) {
-                favorites.splice(index, 1);
-                showToast('Eliminado de tus favoritos');
-            } else {
-                favorites.push(id);
-                showToast('¡Guardado en tus favoritos!');
-            }
-            renderRestaurants(document.getElementById('searchInput').value);
-            renderFavorites();
-        }
-
-        function toggleModalFav() {
-            if (!currentModalDish) return;
-            toggleFavorite(currentModalDish.id);
-            updateModalFavIcon();
-        }
-
-        function updateModalFavIcon() {
-            if (!currentModalDish) return;
-            const btn = document.getElementById('modalFavBtn');
-            const isFav = favorites.includes(currentModalDish.id);
-            btn.innerHTML = `<i class="${isFav ? 'fa-solid fa-heart text-rose-500' : 'fa-regular fa-heart'}"></i>`;
-        }
-
-        // ==========================================
-        // MODAL PLATO LOGIC & CUSTOMIZATION
-        // ==========================================
         function openDishModal(dishId) {
-            let foundDish = null;
-            restaurants.forEach(r => {
-                const d = r.dishes.find(item => item.id === dishId);
-                if (d) foundDish = d;
-            });
-
-            if (!foundDish) return;
-
-            currentModalDish = foundDish;
-            modalQty = 1;
-
-            document.getElementById('modalDishImg').src = foundDish.image;
-            document.getElementById('modalDishTitle').innerText = foundDish.name;
-            document.getElementById('modalDishDesc').innerText = foundDish.desc;
+            let found = null; restaurants.forEach(r => { const d = r.dishes.find(i => i.id === dishId); if (d) found = d; });
+            if (!found) return;
+            currentModalDish = found; modalQty = 1;
+            document.getElementById('modalDishImg').src = found.image;
+            document.getElementById('modalDishTitle').innerText = found.name;
+            document.getElementById('modalDishDesc').innerText = found.desc;
             document.getElementById('modalQty').innerText = modalQty;
-
-            // Reset options
-            document.querySelectorAll('input[name="baseOption"]')[0].checked = true;
-            document.getElementById('checkExtraProtein').checked = false;
-            document.getElementById('checkSauceSeparate').checked = true;
-            document.getElementById('checkNoOnion').checked = false;
-
-            updateModalFavIcon();
             updateModalPrice();
-
             document.getElementById('dishModal').classList.remove('hidden');
         }
 
-        function closeDishModal() {
-            document.getElementById('dishModal').classList.add('hidden');
-            currentModalDish = null;
-        }
-
-        function changeModalQty(delta) {
-            modalQty += delta;
-            if (modalQty < 1) modalQty = 1;
-            document.getElementById('modalQty').innerText = modalQty;
-            updateModalPrice();
-        }
-
-        function updateModalPrice() {
-            if (!currentModalDish) return;
-            let price = currentModalDish.price;
-            
-            if (document.getElementById('checkExtraProtein').checked) {
-                price += 4.00;
-            }
-
-            const total = price * modalQty;
-            document.getElementById('modalCalculatedPrice').innerText = `S/ ${total.toFixed(2)}`;
-        }
+        function closeDishModal() { document.getElementById('dishModal').classList.add('hidden'); }
+        function changeModalQty(delta) { modalQty = Math.max(1, modalQty + delta); document.getElementById('modalQty').innerText = modalQty; updateModalPrice(); }
+        function updateModalPrice() { document.getElementById('modalCalculatedPrice').innerText = `S/ ${(currentModalDish.price * modalQty).toFixed(2)}`; }
 
         function confirmAddToCart() {
-            if (!currentModalDish) return;
-
-            const selectedBase = document.querySelector('input[name="baseOption"]:checked').value;
-            const drink = document.getElementById('drinkSelect').value;
-            const extraProtein = document.getElementById('checkExtraProtein').checked;
-            const sauceSeparate = document.getElementById('checkSauceSeparate').checked;
-            const noOnion = document.getElementById('checkNoOnion').checked;
-
-            let unitPrice = currentModalDish.price + (extraProtein ? 4.00 : 0);
-
-            const cartItem = {
-                id: Date.now(),
-                dishId: currentModalDish.id,
-                name: currentModalDish.name,
-                base: selectedBase,
-                drink: drink,
-                extraProtein: extraProtein,
-                sauceSeparate: sauceSeparate,
-                noOnion: noOnion,
-                qty: modalQty,
-                unitPrice: unitPrice,
-                totalPrice: unitPrice * modalQty
-            };
-
-            cart.push(cartItem);
-            closeDishModal();
-            updateCartUI();
-            showToast('¡Plato añadido a tu pedido del día!');
+            cart.push({ name: currentModalDish.name, base: document.querySelector('input[name="baseOption"]:checked').value, drink: document.getElementById('drinkSelect').value, qty: modalQty, totalPrice: currentModalDish.price * modalQty });
+            closeDishModal(); updateCartUI(); showToast('¡Añadido al pedido!');
         }
 
-        function reorderRecurrent(name, price, base) {
-            cart.push({
-                id: Date.now(),
-                dishId: 'recurrent',
-                name: name,
-                base: base,
-                drink: 'Chicha Morada Natural',
-                extraProtein: false,
-                qty: 1,
-                unitPrice: price,
-                totalPrice: price
-            });
-            updateCartUI();
-            openCheckoutModal();
+        function reorderRecurrent(name, price) {
+            cart.push({ name: name, base: 'Doble Ensalada Fresca', drink: 'Chicha Morada Natural', qty: 1, totalPrice: price });
+            updateCartUI(); openCheckoutModal();
         }
 
-        // ==========================================
-        // CART & CHECKOUT UI
-        // ==========================================
         function updateCartUI() {
-            const floatingBtn = document.getElementById('floatingCartBtn');
-            const countBadge = document.getElementById('cartBadgeCount');
-            const priceBadge = document.getElementById('cartTotalPrice');
-
-            const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
-            const grandTotal = cart.reduce((acc, i) => acc + i.totalPrice, 0);
-
-            if (totalItems > 0) {
-                floatingBtn.classList.remove('hidden');
-                countBadge.innerText = totalItems;
-                priceBadge.innerText = `S/ ${grandTotal.toFixed(2)}`;
-            } else {
-                floatingBtn.classList.add('hidden');
-            }
+            const total = cart.reduce((acc, i) => acc + i.qty, 0);
+            document.getElementById('floatingCartBtn').classList.toggle('hidden', total === 0);
+            document.getElementById('cartBadgeCount').innerText = total;
+            document.getElementById('cartTotalPrice').innerText = `S/ ${cart.reduce((acc, i) => acc + i.totalPrice, 0).toFixed(2)}`;
         }
 
         function openCheckoutModal() {
-            const summaryContainer = document.getElementById('checkoutItemsSummary');
-            
-            if (cart.length === 0) return;
-
-            let html = '';
-            let grandTotal = 0;
-
-            cart.forEach((item, idx) => {
-                grandTotal += item.totalPrice;
-                html += `
-                    <div class="flex justify-between items-start text-xs border-b border-slate-700/50 pb-2">
-                        <div class="space-y-0.5">
-                            <h5 class="font-bold text-white">${item.qty}x ${item.name}</h5>
-                            <p class="text-[10px] text-emerald-300 font-medium">↳ ${item.base}</p>
-                            <p class="text-[10px] text-slate-400">↳ ${item.drink}</p>
-                            ${item.extraProtein ? '<p class="text-[10px] text-cyan-300">+ Proteína Extra (+S/4.00)</p>' : ''}
-                        </div>
-                        <div class="text-right">
-                            <span class="font-extrabold text-cyan-400">S/ ${item.totalPrice.toFixed(2)}</span>
-                            <button onclick="removeFromCart(${idx})" class="block text-[10px] text-rose-400 hover:underline mt-1">Quitar</button>
-                        </div>
-                    </div>
-                `;
-            });
-
-            html += `
-                <div class="flex justify-between items-center pt-2 font-bold text-xs text-white">
-                    <span>TOTAL DEL PEDIDO:</span>
-                    <span class="text-sm text-cyan-400">S/ ${grandTotal.toFixed(2)}</span>
-                </div>
-            `;
-
-            summaryContainer.innerHTML = html;
+            if (!cart.length) return;
+            document.getElementById('checkoutItemsSummary').innerHTML = cart.map(i => `<div class="flex justify-between text-xs"><span>${i.qty}x ${i.name} (${i.base})</span><span class="font-bold text-cyan-400">S/ ${i.totalPrice.toFixed(2)}</span></div>`).join('');
             document.getElementById('checkoutModal').classList.remove('hidden');
         }
 
-        function closeCheckoutModal() {
-            document.getElementById('checkoutModal').classList.add('hidden');
-        }
+        function closeCheckoutModal() { document.getElementById('checkoutModal').classList.add('hidden'); }
 
-        function removeFromCart(idx) {
-            cart.splice(idx, 1);
-            updateCartUI();
-            if (cart.length === 0) {
-                closeCheckoutModal();
-            } else {
-                openCheckoutModal();
-            }
-        }
-
-        // ==========================================
-        // WHATSAPP DISPATCHER (AUTOMATED REDIRECT)
-        // ==========================================
         function sendOrderToWhatsApp(e) {
             e.preventDefault();
-
-            if (cart.length === 0) {
-                showToast('El carrito está vacío');
-                return;
-            }
-
-            const phone = "51928378474"; // Número destino proporcionado
             const name = document.getElementById('custName').value;
             const building = document.getElementById('custBuilding').value;
             const office = document.getElementById('custOffice').value;
             const ref = document.getElementById('custRef').value;
             const payment = document.getElementById('paymentMethod').value;
+            const total = cart.reduce((acc, i) => acc + i.totalPrice, 0);
 
-            const grandTotal = cart.reduce((acc, i) => acc + i.totalPrice, 0);
+            let text = `🍱 *NUEVO PEDIDO - ALMUERZO AL TOQUE*%0A👤 *Cliente:* ${name}%0A🏢 *Edificio:* ${building}%0A🚪 *Oficina:* ${office}%0A📍 *Ref:* ${ref}%0A⏰ *Hora:* 12:45 PM%0A💳 *Pago:* ${payment}%0A%0A🍽️ *DETALLE:*%0A`;
+            cart.forEach(i => text += `• ${i.qty}x ${i.name} [${i.base}] - S/ ${i.totalPrice.toFixed(2)}%0A`);
+            text += `%0A💰 *TOTAL:* S/ ${total.toFixed(2)}`;
 
-            // Armar mensaje formateado para WhatsApp
-            let text = `🍱 *¡NUEVO PEDIDO - ALMUERZO AL TOQUE!* 🍱%0A`;
-            text += `-----------------------------------%0A`;
-            text += `👤 *Cliente:* ${name}%0A`;
-            text += `🏢 *Edificio/Empresa:* ${building}%0A`;
-            text += `📍 *Piso/Oficina:* ${office}%0A`;
-            text += `🔍 *Referencia:* ${ref}%0A`;
-            text += `⏰ *Hora Entrega:* 12:45 PM (Exacto)%0A`;
-            text += `💳 *Método de Pago:* ${payment}%0A`;
-            text += `-----------------------------------%0A`;
-            text += `🍽️ *DETALLE DEL MENÚ:*%0A`;
-
-            cart.forEach((item, index) => {
-                text += `%0A*${index + 1}. ${item.qty}x ${item.name}* (S/ ${item.totalPrice.toFixed(2)})%0A`;
-                text += `   • Base: ${item.base}%0A`;
-                text += `   • Bebida: ${item.drink}%0A`;
-                if (item.extraProtein) text += `   • Proteína Extra (+S/4.00)%0A`;
-                if (item.sauceSeparate) text += `   • Aliño Aparte%0A`;
-                if (item.noOnion) text += `   • Sin Cebolla%0A`;
-            });
-
-            text += `%0A-----------------------------------%0A`;
-            text += `💰 *TOTAL A PAGAR:* S/ ${grandTotal.toFixed(2)}%0A`;
-            text += `-----------------------------------%0A`;
-            text += `✨ _Pedido generado desde App Almuerzo al Toque (San Isidro/Lince)_`;
-
-            const waUrl = `https://wa.me/${phone}?text=${text}`;
-
-            // Abrir WhatsApp en nueva pestaña
-            window.open(waUrl, '_blank');
-
-            // Resetear estado
-            cart = [];
-            updateCartUI();
-            closeCheckoutModal();
-            showToast('¡Redirigiendo a tu WhatsApp con el pedido!');
+            window.open(`https://wa.me/51928378474?text=${text}`, '_blank');
+            cart = []; updateCartUI(); closeCheckoutModal();
         }
 
-        // ==========================================
-        // TOAST HELPER
-        // ==========================================
         function showToast(msg) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toastMsg');
-            toastMsg.innerText = msg;
-            toast.classList.remove('hidden');
-
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            t.classList.remove('hidden');
+            setTimeout(() => t.classList.add('hidden'), 3000);
         }
     </script>
 </body>
